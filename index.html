@@ -8,6 +8,31 @@
   </head>
   <body>
     <h1>Welcome to our library</h1>
+    <div id="myLibrary"></div>
+    <!-- Add Book Button -->
+    <button id="openFormBtn" class="add-book-btn">+ Add Book</button>
+
+    <!-- Popup Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+
+        <h2>Add a New Book</h2>
+
+        <form id="bookForm">
+          <input type="text" id="title" placeholder="Book Title" required />
+          <input type="text" id="author" placeholder="Author" required />
+          <input type="number" id="pages" placeholder="Pages" required />
+
+          <label class="checkbox-label">
+            <input type="checkbox" id="isRead" />
+            Already Read
+          </label>
+
+          <button type="submit" class="submit-btn">Add Book</button>
+        </form>
+      </div>
+    </div>
   </body>
   <script src="./js/script.js"></script>
 </html>
