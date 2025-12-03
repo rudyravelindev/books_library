@@ -1,3 +1,4 @@
+// Book constructor
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
@@ -5,36 +6,17 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
   this.id = crypto.randomUUID();
 }
-// Create first book
-const book1 = new Book('Atomic Habits', 'James Clear', 300, true);
 
-// Create second book
-const book2 = new Book('Clean Code', 'Robert C. Martin', 450, false);
-
-// Create third book
-const book3 = new Book(
-  'The Pragmatic Programmer',
-  'Andy Hunt & Dave Thomas',
-  320,
-  true
-);
-console.log(book1);
-console.log(book2);
-console.log(book3);
-
-// Step 2
+// Library array
 const myLibrary = [];
 
+// Add a new book to the library
 function addBookToLibrary(title, author, pages, isRead) {
-  // Step 1: create a Book
   const newBook = new Book(title, author, pages, isRead);
-
-  // Step 2: push it into myLibrary
   myLibrary.push(newBook);
 }
-addBookToLibrary('Learn to Code', 'Rudy Ravelin', 500, true);
-console.log(myLibrary);
 
+// Display books on the page
 function displayBooks() {
   const myLibraryDiv = document.getElementById('myLibrary');
   myLibraryDiv.innerHTML = '';
@@ -49,7 +31,7 @@ function displayBooks() {
       <h3>${book.title}</h3>
       <p>Author: ${book.author}</p>
       <p>Pages: ${book.pages}</p>
-      <p>Status: ${book.read ? 'Read ✔️' : 'Not read ❌'}</p>
+      <p>Status: ${book.isRead ? 'Read ✔️' : 'Not read ❌'}</p>
       <button class="toggle-read" data-index="${i}">Toggle Read</button>
       <button class="remove-book" data-index="${i}">Remove</button>
     `;
@@ -59,13 +41,15 @@ function displayBooks() {
 
   addBookCardListeners();
 }
+
+// Add event listeners to the book buttons
 function addBookCardListeners() {
   // Toggle Read
   const toggleButtons = document.querySelectorAll('.toggle-read');
   toggleButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const index = btn.getAttribute('data-index');
-      myLibrary[index].read = !myLibrary[index].read;
+      myLibrary[index].isRead = !myLibrary[index].isRead;
       displayBooks();
     });
   });
@@ -80,6 +64,7 @@ function addBookCardListeners() {
     });
   });
 }
+
 // Modal elements
 const modal = document.getElementById('modal');
 const openFormBtn = document.getElementById('openFormBtn');
